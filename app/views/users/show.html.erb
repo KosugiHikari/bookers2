@@ -5,13 +5,15 @@
   <%= @user.name %>
 </div>
 
+<%= link_to "プロフィール編集", edit_user_path %>
+
 <!-- ユーザーの投稿一覧 -->
 <% @books.each do |book| %>
 <div>
   <!-- アカウント画像 -->
   <%= image_tag book.user.get_profile_image(100,100) %>
   <!-- 本のタイトル -->
-  <%= link_to user_path(user.id) do %>
+  <%= link_to book_path(@user.id) do %>
     <%= book.title %>
   <% end %>
   <!-- 本の紹介文 -->
