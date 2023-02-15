@@ -1,25 +1,32 @@
 <!-- ログインユーザーのindexページ -->
 <%= flash[:notice] %>
 
-<!-- 部分テンプレート -->
-<%= render 'info', user:@user %>
-
-<%= link_to "プロフィール編集", edit_user_path(@user.id) %>
-
-<!-- 部分テンプレート -->
-<%= render 'books/new', book:@book %>
-
-<!-- 投稿しているユーザー一覧 -->
-<h1>Users</h1>
-<% @users.each do |user| %>
-<div>
-  <!-- アカウント画像 -->
-  <%= image_tag user.get_profile_image(100,100) %>
-  <!-- ユーザーネーム -->
-  <%= user.name %>
-  <!-- ユーザー詳細ページへのリンク -->
-  <%= link_to user_path(@user.id) do %>
-    <p>Show</p>
-  <% end %>
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-md-4">
+      <!-- 部分テンプレート -->
+      <%= render 'info', user:@user %>
+      <!-- プロフィール編集 -->
+      <%= link_to edit_user_path(@user.id) do %>
+        <i class="fas fa-user-cog"></i>
+      <% end %>
+      <!-- 部分テンプレート -->
+      <%= render 'books/new', book:@book %>
+    </div>
+    
+    <div class="col-md-8">
+      <!-- 投稿しているユーザー一覧 -->
+      <h1>Users</h1>
+      <% @users.each do |user| %>
+        <!-- アカウント画像 -->
+        <%= image_tag user.get_profile_image(100,100) %>
+        <!-- ユーザーネーム -->
+        <%= user.name %>
+        <!-- ユーザー詳細ページへのリンク -->
+        <%= link_to user_path(user.id) do %>
+        <p>Show</p>
+        <% end %>
+      <% end %>
+    </div>
+  </div>
 </div>
-<% end %>

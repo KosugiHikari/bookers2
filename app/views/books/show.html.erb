@@ -2,33 +2,42 @@
 
 <%= flash[:notice] %>
 
-<!-- ユーザーの詳細 -->
-<div>
-  <h1>User info</h1>
-  <%= image_tag @book.user.get_profile_image(100,100) %>
-  <%= @book.user.name %>
-  <%= @book.user.introduction %>
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-md-4">
+      <!-- ユーザーの詳細 -->
+      <h1>User info</h1>
+      <%= image_tag @book.user.get_profile_image(100,100) %>
+      <%= @book.user.name %>
+      <%= @book.user.introduction %>
+    
+      <% if @book.user == current_user %>
+        <%= link_to edit_user_path(@user.id) do %>
+          <i class="fas fa-user-cog"></i>
+        <% end %>
+      <% else %>
+        <%= link_to users_path do %>
+          <i class="fas fa-user-cog"></i>
+        <% end %>
+      <% end %>
+      <!-- 投稿フォーム -->
+      <%= render 'new', book:@book1 %>
+    </div>
+    
+    <div class="col-md-8">
+      <h1>Book detail</h1>
+      <!-- アカウント画像 -->
+      <p><%= image_tag @book.user.get_profile_image(100,100) %></p>
+      <!-- ユーザー名 -->
+      <P><%= @book.user.name %></P>
+      <!-- 本のタイトル -->
+      <p><%= @book.title %></P>
+      <!-- 本の紹介文 -->
+      <p><%= @book.body %></P>
+      <% if @book.user == current_user %>
+        <%= link_to "Edit", edit_book_path(@book.id) %>
+        <%= link_to "Destroy", book_path(@book), method: :delete, "data-confirm" => "本当に消しますか？" %>
+      <% end %>
+    </div>
+  </div>
 </div>
-
-<% if @book.user == current_user %>
-  <%= link_to "プロフィール編集", edit_user_path %>
-<% else %>
-  <%= link_to "プロフィール編集", users_path %>
-<% end %>
-
-<!-- 投稿フォーム -->
-<%= render 'new', book:@book1 %>
-
-<h1>Book detail</h1>
-  <!-- アカウント画像 -->
-  <p><%= image_tag @book.user.get_profile_image(100,100) %></p>
-  <!-- ユーザー名 -->
-  <P><%= @book.user.name %></P>
-  <!-- 本のタイトル -->
-  <p><%= @book.title %></P>
-  <!-- 本の紹介文 -->
-  <p><%= @book.body %></P>
-  <% if @book.user == current_user %>
-    <%= link_to "Edit", edit_book_path(@book.id) %>
-    <%= link_to "Destroy", book_path(@book), method: :delete, "data-confirm" => "本当に消しますか？" %>
-  <% end %>
