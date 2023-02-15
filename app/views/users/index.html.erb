@@ -1,17 +1,20 @@
 <!-- ログインユーザーのindexページ -->
 <%= render 'info', user:@user %>
+
+<%= link_to "プロフィール編集", edit_user_path(@user.id) %>
+
 <%= render 'books/new', book:@book %>
 
 <!-- 投稿しているユーザー一覧 -->
 <h1>Users</h1>
-<% @users.each do |book| %>
+<% @users.each do |user| %>
 <div>
   <!-- アカウント画像 -->
-  <%= image_tag book.user.get_profile_image(100,100) %>
+  <%= image_tag user.get_profile_image(100,100) %>
   <!-- ユーザーネーム -->
   <%= user.name %>
   <!-- ユーザー詳細ページへのリンク -->
-  <%= link_to book_path(book.id) do %>
+  <%= link_to user_path(user.id) do %>
     <p>Show</p>
   <% end %>
 </div>

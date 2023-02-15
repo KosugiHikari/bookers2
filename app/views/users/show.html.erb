@@ -2,6 +2,9 @@
 <%= flash[:notice] %>
 
 <%= render 'info', user:@user %>
+
+<%= link_to "プロフィール編集", edit_user_path(@user.id) %>
+
 <%= render 'books/new', book:@book %>
 
 <!-- ログインユーザーの投稿一覧 -->
