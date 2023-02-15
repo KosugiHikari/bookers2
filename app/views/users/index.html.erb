@@ -1,8 +1,12 @@
 <!-- ログインユーザーのindexページ -->
+<%= flash[:notice] %>
+
+<!-- 部分テンプレート -->
 <%= render 'info', user:@user %>
 
 <%= link_to "プロフィール編集", edit_user_path(@user.id) %>
 
+<!-- 部分テンプレート -->
 <%= render 'books/new', book:@book %>
 
 <!-- 投稿しているユーザー一覧 -->
@@ -14,7 +18,7 @@
   <!-- ユーザーネーム -->
   <%= user.name %>
   <!-- ユーザー詳細ページへのリンク -->
-  <%= link_to user_path(user.id) do %>
+  <%= link_to user_path(@user.id) do %>
     <p>Show</p>
   <% end %>
 </div>
