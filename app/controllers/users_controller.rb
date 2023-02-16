@@ -15,7 +15,6 @@ class UsersController < ApplicationController
  
  def show
     @user = User.find(params[:id])
-    @user1 = current_user
     @book = Book.new
     @books = @user.books
   end
@@ -47,7 +46,13 @@ class UsersController < ApplicationController
   def is_matching_login_user
     user_id = params[:id].to_i
     unless user_id == current_user.id
-      redirect_to user_path(current_user)
+      redirect_to user_path(current_user.id)
+    end
+  end
+  
+  def autheniticate_user
+    if current_user == nil
+    redirect_to new_user_session_path
     end
   end
 end
