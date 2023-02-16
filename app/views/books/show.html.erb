@@ -16,7 +16,7 @@
           <i class="fas fa-user-cog"></i>
         <% end %>
       <% else %>
-        <%= link_to users_path do %>
+        <%= link_to user_path(@user.id) do %>
           <i class="fas fa-user-cog"></i>
         <% end %>
       <% end %>
@@ -29,9 +29,13 @@
       <!-- アカウント画像 -->
       <p><%= image_tag @book.user.get_profile_image(100,100) %></p>
       <!-- ユーザー名 -->
-      <P><%= @book.user.name %></P>
+      <%= link_to user_path(@user1.id) do %>
+        <P><%= @book.user.name %></P>
+      <% end %>
       <!-- 本のタイトル -->
-      <p><%= @book.title %></P>
+      <%= link_to book_path(@book.id) do %>
+        <p><%= @book.title %></P>
+      <% end %>
       <!-- 本の紹介文 -->
       <p><%= @book.body %></P>
       <% if @book.user == current_user %>
