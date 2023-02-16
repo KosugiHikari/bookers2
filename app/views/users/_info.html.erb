@@ -1,7 +1,17 @@
 <!-- ユーザーの詳細 -->
-<div>
+  <div>
   <h1>User info</h1>
-  <%= image_tag user.get_profile_image(100,100) %>
-  <%= user.name %>
-  <%= user.introduction %>
-</div>
+    <%= image_tag user.get_profile_image(100,100) %>
+    <table class="table">
+      <tbody>
+        <tr>
+          <th>name</th>
+          <td><strong><%= user.name %></strong></td>
+        </tr>
+        <tr>
+          <th>introduction</th>
+          <td><strong><%= user.introduction %></strong></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>

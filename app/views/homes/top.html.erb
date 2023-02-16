@@ -1,15 +1,16 @@
 <%= flash[:notice] %>
-
-<div class="mx-auto">
-  <h1>welcome to <i class="fas fa-book"></i><strong>Bookers</strong> !!</h1>
-  <p>In <i class="fas fa-book"></i><strong>Bookers</strong>,</p>
-  <p>you can share and exchange your opinions , inpressions , and emotions</p>
-  <p>about various books!</p>
-  
-  <div class="d-inline-block mx-auto text-center bg-info text-white w-75 my-10">
-  <%= link_to "Log in", new_user_session_path %><br>
-  </div>
-  <div class="d-inline-block text-center bg-success text-white w-75" style="my-10">
-  <%= link_to "Sin up", new_user_registration_path %>
-  </div>
-</div>
+    <div class="d-inline-block mx-auto mt-10">
+      <h1>welcome to <i class="fas fa-book"></i><strong>Bookers</strong> !!</h1>
+      <p>In <i class="fas fa-book"></i><strong>Bookers</strong>,</p>
+      <p>you can share and exchange your opinions , inpressions , and emotions</p>
+      <p>about various books!</p>
+      
+      <div class="max-auto">
+        <div class="d-inline-block max-auto text-center bg-info text-white w-75 my-10">
+        <%= link_to "Log in", new_user_session_path %><br>
+        </div>
+        <div class="d-inline-block max-auto text-center bg-success text-white w-75" style="my-10">
+        <%= link_to "Sin up", new_user_registration_path %>
+        </div>
+      </div>
+    </div>

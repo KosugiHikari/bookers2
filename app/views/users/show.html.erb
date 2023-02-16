@@ -4,8 +4,12 @@
 <div class="container-fluid">
   <div class="row">
     <div class="col-md-4">
-      <!-- 部分テンプレート -->
-      <%= render 'info', user:@user %>
+      <div class="d-flex flex-column">
+        <!-- 部分テンプレート -->
+        <%= render 'info', user:@user %>
+      </div>
+      
+      <button type="button" class="btn btn-outline-secondary w-100">
       <!-- プロフィール編集 -->
       <% if @user == current_user %>
         <%= link_to edit_user_path(@user1.id) do %>
@@ -16,24 +20,45 @@
           <i class="fas fa-user-cog"></i>
         <% end %>
       <% end %>
-      <!-- 部分テンプレート -->
-      <%= render 'books/new', book:@book %>
+      </button>
+      
+      <div class="w-100">
+        <!-- 部分テンプレート -->
+        <%= render 'books/new', book:@book %>
+      </div>
     </div>
     
     <div class="col-md-8">
       <!-- ログインユーザーの投稿一覧 -->
       <h1>Books</h1>
-      
-      <% @books.each do |book| %>
-        <!-- アカウント画像 -->
-        <%= image_tag book.user.get_profile_image(100,100) %>
-        <!-- 本のタイトル -->
-        <%= link_to book_path(book.id) do %>
-          <%= book.title %>
-        <% end %>
-        <!-- 本の紹介文 -->
-        <%= book.body %>
-      <% end %>
+        <table class="table">
+          <thead>
+            <tr>
+              <th> </th>
+              <th>Title</th>
+              <th>Opinion</th>
+            </tr>
+          </thead>
+          <% @books.each do |book| %>
+          <tbody>
+            <td>
+            <!-- アカウント画像 -->
+            <%= image_tag book.user.get_profile_image(100,100) %>
+            </td>
+            <td>
+            <!-- 本のタイトル -->
+            <%= link_to book_path(book.id) do %>
+              <%= book.title %>
+            <% end %>
+            </td>
+            <td>
+            <!-- 本の紹介文 -->
+             <%= book.body %>
+            </td>
+            <% end %>
+          </tbody>
+        </table>
+      </div>
     </div>
   </div>
 </div>
