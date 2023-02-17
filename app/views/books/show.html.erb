@@ -20,7 +20,7 @@
     
     <div class="col-md-8 offset-md-1">
       <h1>Book detail</h1>
-        <table class="table w-75">
+        <table class="table w-100">
           <tbody>
             <td>
               <!-- アカウント画像 -->
@@ -42,14 +42,17 @@
               <!-- 本の紹介文 -->
               <p><%= @book.body %></P>
             </td>
-            <td>
               <% if @book.user == current_user %>
+            <td>
                 <button type="button" class="btn btn-success w-auto">
                 <%= link_to "Edit", edit_book_path(@book.id), class: 'text-light' %>
                 </button>
+            </td>
+            <td>
                 <button type="button" class="btn btn-danger w-auto">
                 <%= link_to "Destroy", book_path(@book), method: :delete, "data-confirm" => "本当に消しますか？", class: 'text-light' %>
                 </button>
+            </td>
               <% end %>
          </tbody>
         </table>
