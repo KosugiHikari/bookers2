@@ -7,16 +7,12 @@
     
     <div class="col-md-3">
       <div class="d-flex flex-column">
-      <!-- ユーザーの詳細 -->
+      <!-- ユーザープロフィール -->
       <%= render 'users/info', user:@book.user %>
-      
-      <!-- 部分テンプレート -->
-      <button class="btn btn-outline-secondary w-100">
-        <%= render 'users/editlink', user: @user %>
-      </button>
-      
+      <!-- プロフィール編集 -->
+      <%= render 'users/editlink', user: @user %>
       <div class="mt-3">
-        <!-- 投稿フォーム -->
+        <!-- 新規投稿フォーム -->
         <%= render 'new', book:@book1 %>
       </div>
       </div>
@@ -48,11 +44,11 @@
             </td>
             <td>
               <% if @book.user == current_user %>
-                <button type="button" class="btn btn-success">
-                <%= link_to "Edit", edit_book_path(@book.id), class: 'nav-link text-light' %>
+                <button type="button" class="btn btn-success w-auto">
+                <%= link_to "Edit", edit_book_path(@book.id), class: 'text-light' %>
                 </button>
-                <button type="button" class="btn btn-danger">
-                <%= link_to "Destroy", book_path(@book), method: :delete, "data-confirm" => "本当に消しますか？", class: 'nav-link text-light' %>
+                <button type="button" class="btn btn-danger w-auto">
+                <%= link_to "Destroy", book_path(@book), method: :delete, "data-confirm" => "本当に消しますか？", class: 'text-light' %>
                 </button>
               <% end %>
          </tbody>

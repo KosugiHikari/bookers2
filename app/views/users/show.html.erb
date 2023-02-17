@@ -5,18 +5,13 @@
     
     <div class="col-md-3">
       <div class="d-flex flex-column">
-        <!-- 部分テンプレート -->
+        <!-- ユーザープロフィール -->
         <%= render 'info', user:@user %>
       </div>
-
-        <!-- 部分テンプレート -->
-        <button class="btn btn-outline-secondary w-100">
-          <%= render 'editlink', user: @user %>
-        </button>
-        
-      </button>
+      <!-- プロフィール編集 -->
+      <%= render 'editlink', user: @user %>
       <div class="mt-3">
-        <!-- 部分テンプレート -->
+        <!-- 新規投稿フォーム -->
         <%= render 'books/new', book:@book %>
       </div>
     </div>
