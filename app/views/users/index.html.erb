@@ -1,32 +1,53 @@
 <!-- ログインユーザーのindexページ -->
 <%= flash[:notice] %>
 
-<div class="container-fluid">
+<div class="container-fluid m-5">
   <div class="row">
-    <div class="col-md-4">
+    <div class="col-md-3">
       <!-- 部分テンプレート -->
       <%= render 'info', user:@user %>
       <!-- プロフィール編集 -->
-      <%= link_to edit_user_path(@user.id) do %>
-        <i class="fas fa-user-cog"></i>
-      <% end %>
+      <button type="button" class="btn btn-outline-secondary w-100">
+        <%= link_to edit_user_path(@user.id), class: 'nav-link text-dark' do %>
+          <i class="fas fa-user-cog"></i>
+        <% end %>
+      </button>
+      <div class="mt-3">
       <!-- 部分テンプレート -->
       <%= render 'books/new', book:@book %>
+      </div>
     </div>
     
-    <div class="col-md-8">
+    <div class="col-md-9">
       <!-- 投稿しているユーザー一覧 -->
       <h1>Users</h1>
-      <% @users.each do |user| %>
-        <!-- アカウント画像 -->
-        <%= image_tag user.get_profile_image(100,100) %>
-        <!-- ユーザーネーム -->
-        <%= user.name %>
-        <!-- ユーザー詳細ページへのリンク -->
-        <%= link_to user_path(user.id) do %>
-        <p>Show</p>
-        <% end %>
-      <% end %>
+        <table class="table w-75">
+          <thead>
+            <tr>
+              <th scope="col" style="width: 10%">image</th>
+              <th scope="col" style="width: 20%">name</th>
+              <th scope="col" style="width: 10%"> </th>
+            </tr>
+          </thead>
+            <% @users.each do |user| %>
+              <tbody>
+                <td>
+                  <!-- アカウント画像 -->
+                  <%= image_tag user.get_profile_image(100,100) %>
+                </td>
+                <td>
+                  <!-- ユーザーネーム -->
+                  <%= user.name %>
+                </td>
+                <td>
+                  <!-- ユーザー詳細ページへのリンク -->
+                  <%= link_to user_path(user.id) do %>
+                  <p>Show</p>
+                  <% end %>
+                </td>
+              </tbody>
+            <% end %>
+        </table>
     </div>
   </div>
 </div>

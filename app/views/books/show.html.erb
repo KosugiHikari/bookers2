@@ -2,42 +2,61 @@
 
 <%= flash[:notice] %>
 
-<div class="container-fluid">
+<div class="container-fluid m-5">
   <div class="row">
-    <div class="col-md-4">
+    
+    <div class="col-md-3">
+      <div class="d-flex flex-column">
       <!-- ユーザーの詳細 -->
-      <h1>User info</h1>
-      <%= image_tag @book.user.get_profile_image(100,100) %>
-      <%= @book.user.name %>
-      <%= @book.user.introduction %>
+      <%= render 'users/info', user:@book.user %>
       
       <!-- 部分テンプレート -->
-      <%= render 'users/editlink', user: @user %>
+      <button class="btn btn-outline-secondary w-100">
+        <%= render 'users/editlink', user: @user %>
+      </button>
       
-      <!-- 投稿フォーム -->
-      <%= render 'new', book:@book1 %>
+      <div class="mt-3">
+        <!-- 投稿フォーム -->
+        <%= render 'new', book:@book1 %>
+      </div>
+      </div>
     </div>
     
-    <div class="col-md-8">
+    <div class="col-md-9">
       <h1>Book detail</h1>
-      <!-- アカウント画像 -->
-      <%= link_to user_path(@user.id) do %>
-        <p><%= image_tag @book.user.get_profile_image(100,100) %></p>
-      <% end %>
-      <!-- ユーザー名 -->
-      <%= link_to user_path(@user.id) do %>
-        <P><%= @book.user.name %></P>
-      <% end %>
-      <!-- 本のタイトル -->
-      <%= link_to book_path(@book.id) do %>
-        <p><%= @book.title %></P>
-      <% end %>
-      <!-- 本の紹介文 -->
-      <p><%= @book.body %></P>
-      <% if @book.user == current_user %>
-        <%= link_to "Edit", edit_book_path(@book.id) %>
-        <%= link_to "Destroy", book_path(@book), method: :delete, "data-confirm" => "本当に消しますか？" %>
-      <% end %>
+        <table class="table w-75">
+          <tbody>
+            <td>
+              <!-- アカウント画像 -->
+              <%= link_to user_path(@user.id) do %>
+                <p><%= image_tag @book.user.get_profile_image(100,100) %></p>
+              <% end %>
+              <!-- ユーザー名 -->
+              <%= link_to user_path(@user.id) do %>
+                <P><%= @book.user.name %></P>
+              <% end %>
+            </td>
+            <td>
+              <!-- 本のタイトル -->
+              <%= link_to book_path(@book.id) do %>
+                <p><%= @book.title %></P>
+              <% end %>
+            </td>
+            <td>
+              <!-- 本の紹介文 -->
+              <p><%= @book.body %></P>
+            </td>
+            <td>
+              <% if @book.user == current_user %>
+                <button type="button" class="btn btn-success">
+                <%= link_to "Edit", edit_book_path(@book.id), class: 'nav-link text-light' %>
+                </button>
+                <button type="button" class="btn btn-danger">
+                <%= link_to "Destroy", book_path(@book), method: :delete, "data-confirm" => "本当に消しますか？", class: 'nav-link text-light' %>
+                </button>
+              <% end %>
+         </tbody>
+        </table>
     </div>
   </div>
 </div>
