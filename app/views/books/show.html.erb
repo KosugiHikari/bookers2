@@ -44,14 +44,16 @@
             </td>
               <% if @book.user == current_user %>
             <td>
-                <button type="button" class="btn btn-success w-auto">
-                <%= link_to "Edit", edit_book_path(@book.id), class: 'text-light' %>
+              <%= link_to edit_book_path(@book.id), class: 'text-light' do %>
+                <button type="button" class="btn btn-success w-auto">Edit
                 </button>
+              <% end %>
             </td>
             <td>
-                <button type="button" class="btn btn-danger w-auto">
-                <%= link_to "Destroy", book_path(@book), method: :delete, "data-confirm" => "本当に消しますか？", class: 'text-light' %>
+              <%= link_to book_path(@book), method: :delete, "data-confirm" => "本当に消しますか？", class: 'text-light' do %>
+                <button type="button" class="btn btn-danger w-auto">Destroy
                 </button>
+              <% end %>
             </td>
               <% end %>
          </tbody>

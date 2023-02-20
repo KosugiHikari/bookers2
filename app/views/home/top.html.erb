@@ -7,14 +7,16 @@
       
   <div class="text-center">
     <div class="my-3">
-      <button type="button" class="btn btn-info w-75">
-        <%= link_to "Log in", new_user_session_path, class: 'nav-link text-light' %>
-      </button>
+      <%= link_to new_user_session_path, class: 'text-light' do %>
+        <button type="button" class="btn btn-info w-75">Log in
+        </button>
+      <% end %>
     </div>
     <div class="my-3">
-      <button type="button" class="btn btn-success w-75">
-        <%= link_to "Sign up", new_user_registration_path, class: 'nav-link text-light' %>
-      </button>
+      <%= link_to new_user_registration_path, class: 'text-light' do %>
+        <button type="button" class="btn btn-success w-75">Sign up
+        </button>
+      <% end %>
     </div>
   </div>
 </div>
